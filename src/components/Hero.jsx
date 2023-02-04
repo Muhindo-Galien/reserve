@@ -14,7 +14,7 @@ const Hero = () => {
             '>Add An Event</button>
           </div>
         </div>
-        <div className='w-full sm:w-2/5'>
+        <div className='w-full sm:w-2/5 pb-4 sm:pb-0'>
           <img src={ticketPng} alt='ticketPng' className='h-64 w-full object-cover'/>
         </div>
       </div>
