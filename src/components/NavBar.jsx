@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connectWallet } from '../sevices/Blockchain'
+import { truncate, useGlobalState } from '../store'
 
 const NavBar = () => {
-
+  const [connectedAccount] = useGlobalState('connectedAccount')
   return (
     <div className=" sm:px-8 bg-[#8D72E1] z-50 mx-auto w-full fixed shadow-sm text-gray-50">
         <div className=' flex items-center justify-between py-4 sm:mx-0 mx-4 '>
@@ -28,7 +30,19 @@ const NavBar = () => {
           </div>
 
             <div className='flex gap-4 items-center'>
-              <button disabled type='button' className=' sm:block bg-white font-medium  px-3 py-2 rounded-2xl text-gray-900 my-1 cursor-pointer'>Connect Wallet</button>
+              {connectedAccount?(
+                <button  
+                disabled
+                type='button' 
+                className=' sm:block bg-white font-medium  px-3 py-2 rounded-2xl text-gray-900 my-1 cursor-none'
+                >{truncate(connectedAccount,6,6,15)}</button>
+              ):(
+                <button  
+                type='button' 
+                className=' sm:block bg-white font-medium  px-3 py-2 rounded-2xl text-gray-900 my-1 cursor-pointer'
+                onClick={()=>connectWallet()} 
+                >Connect Wallet</button>
+              )}
             </div>
           </div>
         </div>
