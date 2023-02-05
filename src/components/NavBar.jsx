@@ -18,8 +18,11 @@ const NavBar = () => {
               <Link to={'/about'}>
                 <li className='cursor-pointer'>About</li>
               </Link>
-              <Link to={'/'}>
-                <li className='cursor-pointer'>Feedbacks</li>
+              <Link to={'/my-events'}>
+                <li className='cursor-pointer'>My events</li>
+              </Link>
+              <Link to={'/my-tickets'}>
+                <li className='cursor-pointer'>My tickets</li>
               </Link>
             </ul>
           </div>

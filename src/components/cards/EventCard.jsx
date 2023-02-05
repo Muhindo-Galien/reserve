@@ -16,16 +16,16 @@ const EventCard = () => {
           <div className='grid grid-cols-1 gap-2 rounded sm:grid-cols-2'>
             <div className=' bg-[#000] rounded h-16 sm:h-24 flex flex-col  items-center justify-center py-2 px-1.5'>
               <FaTicketAlt className='text-3xl'/>
-              <h2 className=' capitalized text-center text-sm'>20 Sil tickets</h2>
+              <h2 className=' capitalized text-center text-sm'><span className='font-semibold sm:font-medium'>20</span> Sil tickets</h2>
             </div>
             <div className=' rounded h-16 sm:h-24 flex flex-col  items-center justify-center py-2 px-1.5 bg-[#000]'>
               <FaTicketAlt className='text-3xl'/>
-              <h2 className=' capitalized text-center text-sm font-normal'>5 VIP tickets</h2>
+              <h2 className=' capitalized text-center text-sm font-normal'><span className='font-semibold  sm:font-medium'>5</span> VIP tickets</h2>
             </div>
           </div>
             <div className='rounded h-14 sm:h-auto  flex flex-col  items-center justify-center py-2 px-1.5 bg-[#fff] text-gray-800'>
-              <span>120 minutes</span>
-              <span>Left</span>
+              <span className='text-sm sm:text-base font-normal'>120 minutes</span>
+              <span className='text-sm sm:text-base font-normal'>Left</span>
             </div>
         </div>
 

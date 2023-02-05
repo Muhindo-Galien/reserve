@@ -1,6 +1,7 @@
 import React from 'react'
-import Events from './Events'
-import Hero from './Hero';
+import Hero from '../components/Hero';
+import Events from '../components/Events';
+
 
 const LandingPage = () => {
   const fakeArray = Array(4).fill().map((item, i) => i);
@@ -10,14 +11,7 @@ const LandingPage = () => {
       <div className='pb-12 sm:pb-14 text-white'>
         <h2 c className='font-semibold text-2xl text-center'>Latest events</h2>
       </div>
-      <div className="mx-4 grid grid-cols-1  gap-2 sm:grid-cols-2 sm:gap-4">
-        {fakeArray.map((item,i)=>{
-            return(
-              <Events/>
-            )
-        }
-        )}
-      </div>
+      <Events fakeArray={fakeArray}/>
     </div>
   )
 }
