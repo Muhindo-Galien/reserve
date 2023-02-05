@@ -205,9 +205,9 @@ const getMyEvents = async()=>{
   if(account){
     const contract = await getEtheriumContract();
     try {
-      const allMyEvents=async()=>{
-        const myEvents = await contract.methods.
-      }
+      // const allMyEvents=async()=>{
+      //   const myEvents = await contract.methods
+      // }
     } catch (error) {
       console.log(error);
     }
