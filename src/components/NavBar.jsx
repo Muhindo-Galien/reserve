@@ -6,7 +6,7 @@ import { truncate, useGlobalState } from '../store'
 const NavBar = () => {
   const [connectedAccount] = useGlobalState('connectedAccount')
   return (
-    <div className=" sm:px-8 bg-[#8D72E1] z-50 mx-auto w-full fixed shadow-sm text-gray-50">
+    <div className=" sm:px-8 bg-[#8D72E1] z-30 mx-auto w-full fixed shadow-sm text-gray-50">
         <div className=' flex items-center justify-between py-4 sm:mx-0 mx-4 '>
           <Link to={'/'}>
             <h1 className='font-black text-4xl'>Reserve</h1>

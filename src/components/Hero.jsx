@@ -1,16 +1,8 @@
 import React from 'react'
 import ticketPng from "../assets/ticket.png"
-import { addTicket } from '../sevices/Blockchain'
+import { setGlobalState } from '../store'
 
 const Hero = () => {
-  const createEvent = async()=>{
-    try {
-      await addTicket()
-    } catch (error) {
-      console.log(error);
-      
-    }
-  }
   return (
     <div className='pb-8 max-w-4xl mx-auto'>
       <div className="mx-4 flex flex-col sm:flex-row gap-8 sm:gap-2 justify-center sm:justify-between text-white">
@@ -20,7 +12,7 @@ const Hero = () => {
             <p className='text-sm pt-2'>Reserve allows you to sell or buy tickets in the quickest way possible with a lowesst service fee </p>
             <button 
               type='button'
-              onClick={()=>createEvent()}
+              onClick={() => setGlobalState('modal', 'scale-100')}
               className='my-4 bg-[#977bed] text-base hover:text-white py-2 px-2.5 rounded-2xl hover:bg-[#9276e7] hover:border-none shadow-lg font-semibold
             '>Add An Event</button>
           </div>

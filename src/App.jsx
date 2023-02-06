@@ -9,6 +9,9 @@ import NavBar from './components/NavBar';
 import EventDetails from './pages/EventDetails';
 import { useEffect, useState } from 'react';
 import { getContractAllEvents, getEtheriumContract, getMyTickets, isWallectConnected } from './sevices/Blockchain';
+import AddEvent from './components/AddEvent';
+import Alert from './components/Alert';
+import Loading from './components/Loading';
 
 
 export default function App() {
@@ -37,6 +40,9 @@ export default function App() {
         </Routes>
          ) : null}
         <Footer/>
+        <AddEvent/>
+          <Loading/>
+        <Alert/>
       <Toaster />
     </div>
   )

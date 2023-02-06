@@ -1,6 +1,6 @@
 import Web3 from 'web3'
 import { toast } from 'react-hot-toast'
-import {getGlobalState, setGlobalState} from "../store/index"
+import {getGlobalState, setAlert, setGlobalState, setLoadingMsg} from "../store/index"
 import abi from "../abis/TicketBooking.json"
 export const contractAddress ='0x5FbDB2315678afecb367f032d93F642f64180aa3'
 
@@ -59,27 +59,42 @@ const getEtheriumContract = async () => {
   }
 }
 
-const addTicket= async()=>{
+const addTicket= async({ 
+  silverTicketPrice,
+  vipTicketPrice,
+  silvericketCount,
+  vipTicketCount,
+  title,
+  eventDate,
+  evenHost,
+  eventVenue
+})=>{
   try {
     const sender = getGlobalState('connectedAccount')
     const listFee = window.web3.utils.toWei('0.5', 'ether');
     if(sender){
       const contract = await getEtheriumContract();
-      const vipTickePrice =  window.web3.utils.toWei('5', 'ether');
-      const silverTickePrice =  window.web3.utils.toWei('10', 'ether');
-
-      toast.success('Transfer started...')
+       vipTicketPrice =  window.web3.utils.toWei(vipTicketPrice.toString(), 'ether');
+       silverTicketPrice =  window.web3.utils.toWei(silverTicketPrice.toString(), 'ether');
+       vipTicketCount=Number(silvericketCount)
+       silvericketCount=Number(silvericketCount)
       setGlobalState('started',true)
-
-      const tx= await contract.methods.addEvent(
-        vipTickePrice,silverTickePrice,2,1,"AU graduatio"
+      setLoadingMsg("Processsing...","white")
+      await contract.methods.addEvent(
+        silverTicketPrice,
+        vipTicketPrice,
+        silvericketCount,
+        vipTicketCount,
+        title,
+        eventDate,
+        evenHost,
+        eventVenue
       ).send({ from: sender, value: listFee })
-
-      toast.success('Token sent successfully')
-      window.location.reload()
+      setAlert('Event Added successfully','white')
       setGlobalState('started',false)
     }
   } catch (error) {
+    setAlert("Proccess failed",'red')
     console.log(error);
   }
 }
@@ -116,6 +131,7 @@ const getContractAllEvents= async()=>{
       const contract = await getEtheriumContract();
       const events = await contract.methods.getAllEvents().call()
       setGlobalState('allEvents',structuredEvent(events));
+      console.log('getContractAllEvents',structuredEvent(events))
     }
     else{
       console.log('Please, Connect Your MetaMask Wallet!');

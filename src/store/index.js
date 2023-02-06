@@ -3,10 +3,10 @@ import { createGlobalState } from "react-hooks-global-state";
 
 const {setGlobalState, useGlobalState, getGlobalState }=createGlobalState({
   modal: 'scale-0',
-  updateModal: 'scale-0',
-  showModal: 'scale-0',
   started:false,
+  alert: { show: true, msg: 'Minting', color: 'red' },
   loading: { show: false, msg: '' },
+  started:false,
   connectedAccount: '',
   ticket: null,
   eventDetails: null,
@@ -38,6 +38,18 @@ const minutesRemaining = (days) => {
   let minutes = days.diff(todaysdate, 'minutes');
   return minutes < 0 ? 0 : minutes;
 }
+const setAlert = (msg, color = 'green') => {
+  setGlobalState('loading', false)
+  setGlobalState('alert', { show: true, msg, color })
+  setTimeout(() => {
+    setGlobalState('alert', { show: false, msg: '', color })
+  }, 3000)
+}
+
+const setLoadingMsg = (msg) => {
+  const loading = getGlobalState('loading')
+  setGlobalState('loading', {show: true, msg })
+}
 
 
 export {
@@ -45,5 +57,7 @@ export {
   setGlobalState,
   getGlobalState,
   truncate,
-  minutesRemaining
+  minutesRemaining,
+  setLoadingMsg,
+  setAlert
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useGlobalState } from '../store'
 import EventCard from './cards/EventCard'
 
-const Events = ({fakeArray}) => {
+const Events = () => {
   const [allEvents]=useGlobalState('allEvents')
   console.log("allEvents",allEvents);
   return (
