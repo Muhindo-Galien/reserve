@@ -13,7 +13,7 @@ const Hero = () => {
             <button 
               type='button'
               onClick={() => setGlobalState('modal', 'scale-100')}
-              className='my-4 bg-[#977bed] text-base hover:text-white py-2 px-2.5 rounded-2xl hover:bg-[#9276e7] hover:border-none shadow-lg font-semibold
+              className='my-4 bg-[#fff] text-base hover:text-white  py-2 px-2.5 rounded text-gray-800 hover:bg-[#9276e7] hover:border-none shadow-lg font-semibold
             '>Add An Event</button>
           </div>
         </div>

@@ -8,7 +8,7 @@ import MyTickets from './pages/MyTickets';
 import NavBar from './components/NavBar';
 import EventDetails from './pages/EventDetails';
 import { useEffect, useState } from 'react';
-import { getContractAllEvents, getEtheriumContract, getMyTickets, isWallectConnected } from './sevices/Blockchain';
+import { getContractAllEvents, getEtheriumContract, getEvents, getMyTickets, isWallectConnected } from './sevices/Blockchain';
 import AddEvent from './components/AddEvent';
 import Alert from './components/Alert';
 import Loading from './components/Loading';
@@ -23,6 +23,7 @@ export default function App() {
       await getEtheriumContract()
       await getContractAllEvents()
       await getMyTickets()
+      await getEvents()
       setLoaded(true)
     }
     loadData()
@@ -36,7 +37,7 @@ export default function App() {
           <Route path="/about" element={<About/>} />
           <Route path="/my-events" element={<MyEvents />} />
           <Route path="/my-tickets" element={<MyTickets />} />
-          <Route path="/event/:id" element={<EventDetails />} />
+          <Route path="/event/:id" element={<EventDetails loaded={loaded}/>} />
         </Routes>
          ) : null}
         <Footer/>

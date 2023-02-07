@@ -4,7 +4,7 @@ import { createGlobalState } from "react-hooks-global-state";
 const {setGlobalState, useGlobalState, getGlobalState }=createGlobalState({
   modal: 'scale-0',
   started:false,
-  alert: { show: true, msg: 'Minting', color: 'red' },
+  alert: { show: false, msg: '', color: '' },
   loading: { show: false, msg: '' },
   started:false,
   connectedAccount: '',
@@ -15,6 +15,10 @@ const {setGlobalState, useGlobalState, getGlobalState }=createGlobalState({
   myTickets: [],
   myEvents: [],
   allEvents: [],
+  avialableSilverTickets: [],
+  soldSilverTickets: [],
+  avialableVipTickets:[],
+  soldVipTickets:[],
   contract: null,
 });
 
@@ -36,7 +40,15 @@ const minutesRemaining = (days) => {
   days = moment(days).format('YYYY-MM-DD');
   days = moment(days);
   let minutes = days.diff(todaysdate, 'minutes');
+  
   return minutes < 0 ? 0 : minutes;
+}
+
+
+const displayData = (eventDate)=>{
+  const date = new Date(eventDate * 1000);
+  const dateString =  date.toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})
+  return dateString;
 }
 const setAlert = (msg, color = 'green') => {
   setGlobalState('loading', false)
@@ -59,5 +71,6 @@ export {
   truncate,
   minutesRemaining,
   setLoadingMsg,
-  setAlert
+  setAlert,
+  displayData
 }

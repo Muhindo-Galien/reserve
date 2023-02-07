@@ -1,12 +1,15 @@
+import moment from 'moment';
 import React from 'react'
 import { FaTicketAlt } from 'react-icons/fa';
+import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { purchaseTicket } from '../../sevices/Blockchain';
+import { displayData } from '../../store';
 
-const TicketCard = ({category,eventDate,eventId,eventTitle,ticketId,ticketPrice}) => {
-
+const TicketCard = ({category,eventDate,eventId,orderedAt,sold,eventVenue,eventTitle,ticketId,ticketPrice}) => {
   const handlePurchase = async()=>{
     try {
       await purchaseTicket(ticketId,ticketPrice)
+      console.log('ticketId',ticketId)
     } catch (error) {
       console.log('error');
     }
@@ -19,17 +22,30 @@ const TicketCard = ({category,eventDate,eventId,eventTitle,ticketId,ticketPrice}
             <FaTicketAlt className='text-5xl'/>
           <h4 className='text-sm font-semibold'>{category&&category} Ticket</h4>
         </div>
-        <div className=' flex flex-col gap-2 w-7/12 sm:w-3/5 justify-center '>
-          <h2 className=' font-semibold text-xl py-0'>{eventTitle&&eventTitle}</h2>
+        <div className=' flex flex-col pb-2 gap-0.5 w-7/12 sm:w-3/5 justify-center'>
+          <div className='flex justify-between items-center'>
+            <h2 className=' font-semibold text-lg py-0'>{eventTitle&&eventTitle}</h2>
+            <p className='mr-4 font-bold'>#{ticketId}</p>
+          </div>
           <h2 className='text-sm font-medium'> Ticket price <span className='font-bold'>{ticketPrice&&ticketPrice} ETH</span></h2>
-          <h2 className='text-sm font-medium'>Event Date <span className='font-semibold bg-[#fff] px-1.5 py-1 rounded-xl text-gray-800'>14/02/2023</span></h2>
-          <button 
-              type='button'
-              className='w-40 bg-[#fff] text-gray-800 text-base  py-2 px-2.5 rounded-2xl hover:bg-gray-100 hover:border-none shadow-xl font-semibold'
-              onClick={()=>handlePurchase()}
-              >
-              Book now
-          </button>     
+          <h2 className='text-sm font-medium'>Event Date <span className='font-semibold bg-[#fff] px-2 py-1 rounded-xl text-gray-800'>{displayData(eventDate&&eventDate)}</span></h2>
+          <h2 className='text-sm font-medium flex items-center'>Venue: <HiOutlineLocationMarker className='mx-1'/>
+           <span className='font-bold'> {eventVenue&&eventVenue}</span></h2>
+          {orderedAt&&(  
+            <h2 className='text-sm font-medium'> Ordered <span className='font-bold'>
+            { moment(Number(orderedAt + '000')).fromNow()}
+            </span></h2>
+            
+          )}
+           {sold&&sold?(null):(
+             <button 
+                 type='button'
+                 className='w-40 bg-[#fff] text-gray-800 text-base  py-1.5 px-2 rounded-2xl hover:bg-gray-100 hover:border-none shadow-xl font-semibold'
+                 onClick={()=>handlePurchase()}
+                 >
+                 Book now
+             </button>     
+           )}
         </div>
       </div>
     </div>
