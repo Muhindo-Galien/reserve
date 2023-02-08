@@ -19,28 +19,7 @@ const AddEvent = () => {
     const dateObj = Date.parse(dateStr)
     return dateObj / 1000
   }
-
-  // console.log(
-  // 'title=>',title+
-  // '\nsilvericketCount=>',silvericketCount+
-  // '\nvipTicketCount=>',vipTicketCount+
-  // '\nsilverTicketPrice=>',silverTicketPrice+
-  // '\nvipTicketPrice=>',vipTicketPrice+
-  // '\neventDate=>',toTimestamp(eventDate)+
-  // '\nevenHost=>',evenHost+
-  // '\nevenHost=>',eventVenue
-  // )
-  {/* function addEvent(
-  uint _silverTicketPrice,
-  uint _vipTicketPrice,
-uint _ticketCount,
-uint _vipTicketCount,
-string memory _eventTitle,
-uint _eventDate,
-string memory _evenHost,
-string memory _eventVenue */}
  
-
   const handleSubmit= async (e) => {
     e.preventDefault()
     if (!silverTicketPrice || !vipTicketPrice || !silvericketCount || !vipTicketCount || !title || !eventDate || !evenHost || !eventVenue) return

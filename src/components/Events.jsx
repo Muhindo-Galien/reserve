@@ -5,7 +5,6 @@ import EventCard from './cards/EventCard'
 
 const Events = () => {
   const [allEvents]=useGlobalState('allEvents')
-  console.log("allEvents",allEvents);
   return (
     <>
       <div className="mx-4 grid grid-cols-1  gap-2 sm:grid-cols-2 sm:gap-4">

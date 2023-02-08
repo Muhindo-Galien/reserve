@@ -10,7 +10,7 @@ window.web3 = new Web3(window.web3.currentProvider)
 
 const connectWallet = async () => {
   try {
-    if (!ethereum) return console.log('Please install Metamask')
+    if (!ethereum) { console.log('Please install Metamask')}
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
     setGlobalState('connectedAccount', accounts[0]?.toLowerCase())
     window.location.reload()
@@ -53,7 +53,6 @@ const getEtheriumContract = async () => {
     const web3 = window.web3
       const contract = new web3.eth.Contract(abi.abi, contractAddress)
       setGlobalState('contract',await contract)
-      console.log(contract);
       return contract
   } else {
     return getGlobalState('contract')
@@ -205,8 +204,6 @@ const getEvent=async(id)=>{
       // set global state for silver
       setGlobalState('avialableSilverTickets',avialableSilverTickets)
       setGlobalState('soldSilverTickets',soldSilverTickets)
-      console.log(avialableSilverTickets)
-      console.log(soldSilverTickets)
 
       //set global state  for VIP
       setGlobalState('avialableVipTickets',avialableVipTickets)
@@ -257,7 +254,6 @@ const getMyTickets = async()=>{
         const ticket = await contract.methods.myOrders(account,i+1).call()
         allMyTickets.push(ticket)
       }
-      console.log('allMyTickets',structuredTicket(allMyTickets)); 
       setGlobalState('myTickets',structuredTicket(allMyTickets));
     } catch (error) {
       console.log('error');
@@ -278,7 +274,6 @@ const getEvents = async()=>{
         const singleEvent = await contract.methods.myEvents(account,counter).call();   
         allMyEvents.push(singleEvent)
       }
-      console.log('allMyEvents',allMyEvents); 
       setGlobalState('myEvents',structuredEvent(allMyEvents));
 
 
