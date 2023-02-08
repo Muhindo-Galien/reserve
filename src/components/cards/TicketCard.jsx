@@ -4,12 +4,14 @@ import { FaTicketAlt } from 'react-icons/fa';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { purchaseTicket } from '../../sevices/Blockchain';
 import { displayData } from '../../store';
+import{useNavigate } from 'react-router-dom'
 
 const TicketCard = ({category,eventDate,eventId,orderedAt,sold,eventVenue,eventTitle,ticketId,ticketPrice}) => {
+  const navigate = useNavigate();
   const handlePurchase = async()=>{
     try {
       await purchaseTicket(ticketId,ticketPrice)
-      console.log('ticketId',ticketId)
+      navigate('/my-tickets')
     } catch (error) {
       console.log('error');
     }

@@ -34,15 +34,35 @@ const truncate = (text, startChars, endChars, maxLength) => {
   return text
 }
 
-const minutesRemaining = (days) => {
-  const todaysdate = moment();
-  days = Number((days + '000').slice(0));
-  days = moment(days).format('YYYY-MM-DD');
-  days = moment(days);
-  let minutes = days.diff(todaysdate, 'minutes');
+// const minutesRemaining = (days) => {
+//   const todaysdate = moment();
+//   days = Number((days + '000').slice(0));
+//   days = moment(days).format('YYYY-MM-DD');
+//   days = moment(days);
+//   let minutes = days.diff(todaysdate, 'minutes');
   
-  return minutes < 0 ? 0 : minutes;
+//   return minutes < 0 ? 0 : minutes;
+// }
+function minutesRemaining(timestamp) {
+  var currentTime = Math.floor(Date.now() / 1000);
+  var timeDifference = currentTime - timestamp;
+
+  var minutes = Math.floor(timeDifference / 60);
+  var seconds = timeDifference % 60;
+
+  return { minutes:seconds,
+    seconds:seconds
+  };
+
 }
+// const minutesRemaining = (timestamp) => {
+//   const now = moment();
+//   const targetTime = moment(timestamp);
+//   let minutes = targetTime.diff(now, 'minutes');
+  
+//   return minutes < 0 ? 0 : minutes;
+// }
+
 
 
 const displayData = (eventDate)=>{

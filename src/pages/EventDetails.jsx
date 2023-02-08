@@ -71,7 +71,7 @@ const EventDetails = ({loaded}) => {
              <div className=' flex flex-col justify-center'>
           <div className='flex justify-between'>
             <h2 className=' font-semibold text-xl text-center'>{eventDetails?.eventTitle}</h2>
-            <h2 className=' font-semibold text-xl text-center'>Event Date: {displayData(eventDetails?.eventDate)}</h2>
+            <h2 className=' font-semibold text-lg text-center'>Event Date: {displayData(eventDetails?.eventDate)}</h2>
           </div>
           <div className='flex flex-col sm:flex-row gap-2 sm-gap-4 '>
             <div className='w-full sm:w-3/6'>
@@ -84,7 +84,7 @@ const EventDetails = ({loaded}) => {
                     })}
                   </div>
               </div>
-              <p className='text-center bg-white text-gray-800 py-1.5 px-2 w-full rounded text-lg font-medium mb-3 capitalize'>Aviable {avSilverData?.length}</p>
+              <p className='text-center bg-white text-gray-800 py-1.5 px-2 w-full rounded text-lg font-medium mb-3 capitalize'>available {avSilverData?.length}</p>
               <div>
                   <div className='grid grid-cols-1 gap-2'>
                     {
@@ -113,7 +113,7 @@ const EventDetails = ({loaded}) => {
                     })}
                   </div>
               </div>
-              <p className='text-center bg-white text-gray-800 py-1.5 px-2 w-full rounded text-lg font-medium mb-3 capitalize'>Aviable {avVipData?.length}</p>
+              <p className='text-center bg-white text-gray-800 py-1.5 px-2 w-full rounded text-lg font-medium mb-3 capitalize'>Available {avVipData?.length}</p>
               <div>
                   <div className='grid grid-cols-1 gap-2'>
                     {
