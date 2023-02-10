@@ -16,7 +16,7 @@ const LandingPage = () => {
         {connectedAccount?(
           <h2 className='font-semibold text-2xl text-center'>Latest events</h2>
         ):(
-          <p className='font-bold text-center pt-5'>Please, Connecte Your Meta Mast wallet!</p>
+          <p className='font-bold text-center pt-5'>Please, Connecte Your MetaMask wallet!</p>
           
         )}
         
