@@ -5,7 +5,6 @@ import { addTicket } from '../sevices/Blockchain'
 
 const AddEvent = () => {
   const [modal] = useGlobalState('modal')
-  const [started] = useGlobalState('started')
   const[title,setTitle] =useState('')
   const[vipTicketCount,setVipTicketCount] =useState('')
   const[silvericketCount,setSilverTicketCount] =useState('')

@@ -2,7 +2,8 @@ import Web3 from 'web3'
 import { toast } from 'react-hot-toast'
 import {getGlobalState, setAlert, setGlobalState, setLoadingMsg} from "../store/index"
 import abi from "../abis/TicketBooking.json"
-export const contractAddress ='0x5FbDB2315678afecb367f032d93F642f64180aa3'
+import { Await } from 'react-router-dom'
+export const contractAddress ='0x08C4915436563BA190f7F6da2AdCd7EF9Db94c11'
 
 const { ethereum } = window
 window.web3 = new Web3(ethereum)
@@ -76,7 +77,7 @@ const addTicket= async({
       const contract = await getEtheriumContract();
        vipTicketPrice =  window.web3.utils.toWei(vipTicketPrice.toString(), 'ether');
        silverTicketPrice =  window.web3.utils.toWei(silverTicketPrice.toString(), 'ether');
-       vipTicketCount=Number(silvericketCount)
+       vipTicketCount=Number(vipTicketCount)
        silvericketCount=Number(silvericketCount)
       setGlobalState('started',true)
       setLoadingMsg("Add event","white")
@@ -278,8 +279,25 @@ const getEvents = async()=>{
 
 
     } catch (error) {
-      console.log('error');
+      console.log(error);
     }
+  }
+}
+const getContractBalance=async()=>{
+  if(!ethereum) {console.log('Pleace connect your MetaMask Wallet');}
+  const balance = await web3.eth.getBalance(contractAddress)
+  setGlobalState('contractBalance',window.web3.utils.fromWei(balance))
+
+}
+
+const withdrawProcceds =  async()=>{
+  const account = getGlobalState('connectedAccount')
+  const adminAccount = getGlobalState('adminAccount')
+  const balance = getGlobalState('contractBalance')
+  if(!ethereum) {console.log('Pleace connect your MetaMask Wallet');}
+  const contract = await getEtheriumContract()
+  if(balance>0){
+    await contract.methods.withdraw().call().then(console.log)
   }
 }
 
@@ -292,5 +310,7 @@ export {
   getEvent,
   purchaseTicket,
   getMyTickets,
-  getEvents
+  getEvents,
+  getContractBalance,
+  withdrawProcceds
 }

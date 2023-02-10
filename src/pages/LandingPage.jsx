@@ -2,10 +2,12 @@ import React from 'react'
 import Hero from '../components/Hero';
 import Events from '../components/Events';
 import { useGlobalState } from '../store';
+import Admin from '../components/Admin';
 
 
 const LandingPage = () => {
   const [connectedAccount] = useGlobalState('connectedAccount')
+  const [adminAccount] = useGlobalState('adminAccount')
 
   return (
     <div className='py-24 sm:py-28 max-w-4xl mx-auto'>
@@ -20,6 +22,9 @@ const LandingPage = () => {
         
       </div>
       <Events/>
+      {/* {adminAccount.toLocaleLowerCase()==connectedAccount?(
+        <Admin/>
+      ):(null)} */}
     </div>
   )
 }

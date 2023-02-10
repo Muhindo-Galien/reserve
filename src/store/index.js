@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { useEffect } from 'react';
 import { createGlobalState } from "react-hooks-global-state";
 
 const {setGlobalState, useGlobalState, getGlobalState }=createGlobalState({
@@ -8,6 +9,8 @@ const {setGlobalState, useGlobalState, getGlobalState }=createGlobalState({
   loading: { show: false, msg: '' },
   started:false,
   connectedAccount: '',
+  adminAccount: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266',
+  contractBalance:0,
   ticket: null,
   eventDetails: null,
   silverTickets: [],
@@ -34,36 +37,17 @@ const truncate = (text, startChars, endChars, maxLength) => {
   return text
 }
 
-// const minutesRemaining = (days) => {
-//   const todaysdate = moment();
-//   days = Number((days + '000').slice(0));
-//   days = moment(days).format('YYYY-MM-DD');
-//   days = moment(days);
-//   let minutes = days.diff(todaysdate, 'minutes');
-  
-//   return minutes < 0 ? 0 : minutes;
-// }
 function minutesRemaining(timestamp) {
   var currentTime = Math.floor(Date.now() / 1000);
-  var timeDifference = currentTime - timestamp;
-
+  var timeDifference = currentTime - (timestamp);
+  
   var minutes = Math.floor(timeDifference / 60);
   var seconds = timeDifference % 60;
-
-  return { minutes:seconds,
-    seconds:seconds
+  return { minutes:-minutes,
+    seconds:-seconds
   };
-
-}
-// const minutesRemaining = (timestamp) => {
-//   const now = moment();
-//   const targetTime = moment(timestamp);
-//   let minutes = targetTime.diff(now, 'minutes');
   
-//   return minutes < 0 ? 0 : minutes;
-// }
-
-
+} 
 
 const displayData = (eventDate)=>{
   const date = new Date(eventDate * 1000);

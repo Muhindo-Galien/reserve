@@ -64,6 +64,8 @@ const EventDetails = ({loaded}) => {
   useEffect(()=>{
     handleVipData()
   },[avialableVipTickets])
+  console.log('avialableVipTickets',avialableVipTickets);
+  console.log('avialableSilverTickets',avialableSilverTickets);
 
   return (
     <div className='py-24 sm:py-28 max-w-4xl mx-auto text-white'>

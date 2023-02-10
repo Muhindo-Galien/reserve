@@ -8,7 +8,7 @@ import MyTickets from './pages/MyTickets';
 import NavBar from './components/NavBar';
 import EventDetails from './pages/EventDetails';
 import { useEffect, useState } from 'react';
-import { getContractAllEvents, getEtheriumContract, getEvents, getMyTickets, isWallectConnected } from './sevices/Blockchain';
+import { getContractAllEvents, getContractBalance, getEtheriumContract, getEvents, getMyTickets, isWallectConnected } from './sevices/Blockchain';
 import AddEvent from './components/AddEvent';
 import Alert from './components/Alert';
 import Loading from './components/Loading';
@@ -24,6 +24,7 @@ export default function App() {
       await getContractAllEvents()
       await getMyTickets()
       await getEvents()
+      await getContractBalance()
       setLoaded(true)
     }
     loadData()

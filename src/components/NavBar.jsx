@@ -69,11 +69,11 @@ const NavBar = () => {
               )}
                  {
                 opened?(
-                    <div class="sm:hidden block">
+                    <div className="sm:hidden block">
                         <MdClose className='text-3xl' onClick={()=>handleOpened()}/>
                     </div>
                 ):(
-                <div class="sm:hidden block">
+                <div className="sm:hidden block">
                     <HiMenuAlt3 className='text-3xl' onClick={()=>handleOpened()}/>
                 </div>
                 )
