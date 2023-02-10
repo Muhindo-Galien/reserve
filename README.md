@@ -6,3 +6,5 @@ It eliminates the need for intermediaries and ensures data privacy, reducing fra
 
 The purpose of this Reserve is to provide a platform for the sale and purchase of event tickets,Users can purchase tickets
 for events through the smart contract and their purchases will be recorded and tracked.
+
+use goerli testnet to try it out  [live](https://reserve-g.vercel.app/)
